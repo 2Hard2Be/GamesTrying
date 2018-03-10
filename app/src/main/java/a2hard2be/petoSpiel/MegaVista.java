@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -46,6 +47,7 @@ MegaVista(Context context, int screenWidth, int screenHeight) {
     this.screenHeight = screenHeight;
     ourHolder = getHolder();
     paint = new Paint();
+
 
     // agregado
     bitmapBob = BitmapFactory.decodeResource(this.getResources(), R.drawable.bob);
