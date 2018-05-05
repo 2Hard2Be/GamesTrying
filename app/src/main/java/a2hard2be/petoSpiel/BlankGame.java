@@ -50,6 +50,7 @@ LadrillosView ladrillosView;
         int screenY;
 
         Paddle paddle;
+        Ball ball;
 
         public LadrillosView(Context context) {
             super(context);
@@ -61,6 +62,13 @@ LadrillosView ladrillosView;
             screenX = size.x;
             screenY = size.y;
             paddle = new Paddle(screenX, screenY);
+            ball = new Ball(screenX,screenY);
+            createBricksAndRestart();
+        }
+
+        public void createBricksAndRestart(){
+
+            ball.reset(screenX,screenY);
         }
 
         @Override
@@ -82,6 +90,7 @@ LadrillosView ladrillosView;
         public void update() {
 
             paddle.update(fps);
+            ball.update(fps);
 
         }
 
@@ -94,6 +103,7 @@ LadrillosView ladrillosView;
                 //Aqui se dibujan todas las cosas
 
                 canvas.drawRect(paddle.getRect(), paint);
+                canvas.drawRect(ball.getRect(), paint);
 
                 ourHolder.unlockCanvasAndPost(canvas);
 
