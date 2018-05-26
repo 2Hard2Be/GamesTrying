@@ -104,6 +104,7 @@ LadrillosView ladrillosView;
         public void createBricksAndRestart(){
 
             ball.reset(screenX,screenY);
+            paddle.reset(screenX, screenY);
             int brickWidth = screenX / 8;
             int brickHeight = screenY / 10;
             numBricks = 0;
@@ -136,7 +137,7 @@ LadrillosView ladrillosView;
 
         public void update() {
 
-            paddle.update(fps);
+            paddle.update(fps, screenX);
             for(int i = 0; i < numBricks; i++){
 
                 if (bricks[i].getVisibility()){

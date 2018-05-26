@@ -23,9 +23,9 @@ public class Paddle {
     public Paddle (int screenX, int screenY){
 
         length = 130;
-        height = 20;
+        height = 80;
         x = screenX/2;
-        y = screenY - 20;
+        y = screenY- 20;
         rect = new RectF(x,y,x + length, y + height);
         paddleSpeed = 350;
     }
@@ -38,12 +38,20 @@ public class Paddle {
         paddleMoving = state;
     }
 
-    public void update(long fps){
-        if (paddleMoving==LEFT){x = x-paddleSpeed/fps;}
-        if (paddleMoving==RIGHT){x=x+paddleSpeed/fps;}
+    public void update(long fps, int screenX){
+        if (paddleMoving==LEFT){x = x-paddleSpeed/fps;  if(x < 0){ x = x+paddleSpeed/fps;}}
+        if (paddleMoving==RIGHT){x=x+paddleSpeed/fps;  if(x > screenX - 130){ x = x-paddleSpeed/fps;}}
+
         rect.left=x;
         rect.right=x+length;
 
+    }
+
+    public void reset(int screenX, int screenY){
+        length = 130;
+        height = 80;
+        x = screenX/2;
+        y = screenY- 20;
     }
 
 }
